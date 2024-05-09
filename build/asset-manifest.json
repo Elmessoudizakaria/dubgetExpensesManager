@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/static/css/main.1f6847e2.css",
-    "main.js": "/static/js/main.b3582737.js",
-    "index.html": "/index.html",
-    "main.1f6847e2.css.map": "/static/css/main.1f6847e2.css.map",
-    "main.b3582737.js.map": "/static/js/main.b3582737.js.map"
+    "main.css": "/dubgetExpensesManager/static/css/main.1f6847e2.css",
+    "main.js": "/dubgetExpensesManager/static/js/main.b3582737.js",
+    "index.html": "/dubgetExpensesManager/index.html",
+    "main.1f6847e2.css.map": "/dubgetExpensesManager/static/css/main.1f6847e2.css.map",
+    "main.b3582737.js.map": "/dubgetExpensesManager/static/js/main.b3582737.js.map"
   },
   "entrypoints": [
     "static/css/main.1f6847e2.css",
