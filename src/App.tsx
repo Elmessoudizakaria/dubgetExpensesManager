@@ -16,7 +16,6 @@ import {
   FaAngleDown,
   FaAngleUp,
 } from "react-icons/fa";
-import { v4 as uuidv4 } from "uuid";
 
 const EXPENSE_CATEGORIES = [
   "house",
@@ -44,7 +43,7 @@ const App = () => {
   useEffect(() => {
     // Load expenses from localStorage
     const storedExpenses = JSON.parse(
-      localStorage.getItem(formattedDate()) || "[]"
+      localStorage.getItem(formattedDate()) || "[]",
     );
     setExpenses(storedExpenses);
   }, [selectedMonth]);
@@ -52,7 +51,7 @@ const App = () => {
   const handleAddExpense = (event: any) => {
     event.preventDefault();
     if (!expenseName || !expenseValue) return;
-    addExpense(expenseName, parseFloat(expenseValue));
+    addExpense(expenseName, expenseValue);
     setExpenseName("");
     setExpenseValue("");
   };
@@ -62,22 +61,25 @@ const App = () => {
   };
 
   const addExpense = (name: string, value: string) => {
-    const newExpenses = [...expenses, { name, value, id: uuidv4() }];
+    const newExpenses: Expense[] = [
+      ...expenses,
+      { name, value, id: `${expenses.length}` },
+    ];
     saveExpenses(newExpenses);
   };
 
   const deleteExpense = (id: string) => {
-    saveExpenses(expenses.filter((item) => item.id !== id));
+    saveExpenses(expenses.filter((item: Expense) => item.id !== id));
   };
 
   const duplicateExpense = (id: string) => {
-    const expense = expenses.filter((item) => item.id === id)[0];
-    const newExpenses = [...expenses, { ...expense, id: uuidv4() }];
+    const expense = expenses.filter((item: Expense) => item.id === id)[0];
+    const newExpenses = [...expenses, { ...expense, id: `${expenses.length}` }];
     saveExpenses(newExpenses);
   };
 
   const deleteGroupExpense = (name: string) => {
-    saveExpenses(expenses.filter((item) => item.name !== name));
+    saveExpenses(expenses.filter((item: Expense) => item.name !== name));
   };
 
   const handlePreviousMonth = () => {
